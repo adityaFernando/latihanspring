@@ -128,7 +128,7 @@ public final class UserService extends AbstractService {
         return precondition(authentication, User.Role.ADMIN).orElseGet(() -> {
             final Optional<User> userOpt = userRepository.findById(idUser);
         if (userOpt.isEmpty()) {
-            return Response.create("08", "01", "Email atau password salah", null);
+            return Response.create("08", "01", "id tidak ditemukan", null);
         }
         if (userOpt.get().deletedAt() != null) {
             return Response.badRequest();
